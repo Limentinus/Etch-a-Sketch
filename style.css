@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: linear-gradient(to bottom right, rgb(235, 14, 14), rgb(242, 246, 9));
 }
 header {
     display: flex;
