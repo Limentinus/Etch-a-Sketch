@@ -1,9 +1,15 @@
 const container = document.getElementById("container");
 const gridSize = document.getElementById("gridSize");
 const gBtn = document.getElementById("generateBtn");
+const slider = document.getElementById("sizeRange")
+
+
+
 gBtn.addEventListener("click", () => {
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.remove());
     if (gridSize.value < 100) {
-        makeRows(gridSize.value);
+        makeGrid(gridSize.value);
     }
     const gItems = document.querySelectorAll('.gItem');
     console.log(gItems);
@@ -15,7 +21,7 @@ gBtn.addEventListener("click", () => {
 
 })
 
-function makeRows(grd) {
+function makeGrid(grd) {
     container.style.setProperty('--grid-rows', grd);
     container.style.setProperty('--grid-cols', grd);
     for(c = 0; c < (grd * grd); c++) {
@@ -27,3 +33,12 @@ function makeRows(grd) {
     
 };
 
+function pixelSize() {
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.remove());
+    makeGrid(slider.value);
+}
+
+makeGrid(16);
+
+slider.addEventListener("mouseup", pixelSize)
