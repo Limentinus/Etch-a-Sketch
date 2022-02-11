@@ -20,17 +20,14 @@ header {
     height: 700px;
     width: 700px;
     display: grid;
+    border: 2px solid black;
     
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
 
 .gItem {
-    padding: 5px;
     border: 1px solid black;
     text-align: center;
 }
 
-/* .gItem:hover {
-    background-color: rgb(0, 0, 0);
-} */
