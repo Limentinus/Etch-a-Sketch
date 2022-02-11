@@ -1,12 +1,9 @@
 const container = document.getElementById("container");
-const cNr = document.getElementById("columnsNr");
-console.log(cNr.value);
-const rNr = document.getElementById("rowsNr");
-console.log(rNr.value);
+const gridSize = document.getElementById("gridSize");
 const gBtn = document.getElementById("generateBtn");
 gBtn.addEventListener("click", () => {
-    if (rNr.value < 100 && cNr.value < 100) {
-        makeRows(rNr.value, cNr.value);
+    if (gridSize.value < 100) {
+        makeRows(gridSize.value);
     }
     const gItems = document.querySelectorAll('.gItem');
     console.log(gItems);
@@ -18,10 +15,10 @@ gBtn.addEventListener("click", () => {
 
 })
 
-function makeRows(rows, cols) {
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-    for(c = 0; c < (rows * cols); c++) {
+function makeRows(grd) {
+    container.style.setProperty('--grid-rows', grd);
+    container.style.setProperty('--grid-cols', grd);
+    for(c = 0; c < (grd * grd); c++) {
         let cell = document.createElement('div');
         cell.innterText = (c + 1);
         container.appendChild(cell).className = "gItem";
