@@ -1,25 +1,8 @@
 const container = document.getElementById("container");
-const gridSize = document.getElementById("gridSize");
-const gBtn = document.getElementById("generateBtn");
 const slider = document.getElementById("sizeRange")
+const clearBtn = document.getElementById("clearBtn")
 
 
-
-gBtn.addEventListener("click", () => {
-    let gridPixels = container.querySelectorAll('div');
-    gridPixels.forEach(gridPixel => gridPixel.remove());
-    if (gridSize.value < 100) {
-        makeGrid(gridSize.value);
-    }
-    const gItems = document.querySelectorAll('.gItem');
-    console.log(gItems);
-    gItems.forEach(element => {
-        element.onmouseover = () => element.style.backgroundColor= "black";
-    })
-    gBtn.value = "reset";
-    gBtn.addEventListener("click", () => location.reload())
-
-})
 
 function makeGrid(grd) {
     container.style.setProperty('--grid-rows', grd);
@@ -30,15 +13,23 @@ function makeGrid(grd) {
         container.appendChild(cell).className = "gItem";
 
     };
-    
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(element => {
+        element.onmouseover = () => element.style.backgroundColor= "black";
+    })
 };
 
 function pixelSize() {
     let gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.remove());
     makeGrid(slider.value);
+    
 }
 
 makeGrid(16);
 
 slider.addEventListener("mouseup", pixelSize)
+clearBtn.addEventListener("click", () => {
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = "transparent")
+})
